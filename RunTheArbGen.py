@@ -75,7 +75,7 @@ if gen:
         gen.frequency_mode = libtiepie.FM_SAMPLEFREQUENCY
 
         # Set sample frequency:
-        gen.frequency = 1e3  # 100 kHz
+        gen.frequency = 100e3  # 100 kHz
 
         # Set amplitude:
         gen.amplitude = 2  # 2 V
