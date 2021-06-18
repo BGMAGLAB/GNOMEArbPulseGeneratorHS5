@@ -12,6 +12,7 @@ import sys
 import libtiepie
 import time
 import datetime
+import serial
 # from printinfo import *
 
 # Print library info:
@@ -42,6 +43,9 @@ print(datetime.datetime.utcfromtimestamp(start_repeat).strftime('%Y-%m-%d %H:%M:
 
 ts = (2021, 6, 28, 17, 0, 0, 0, 0, 0)  # stop time
 stop_repeat = time.mktime(ts)
+
+port = "COM6"
+ser = serial.Serial(port, baudrate=115200)  # open serial port
 
 # Enable network search:
 #libtiepie.network.auto_detect_enabled = True
@@ -119,6 +123,7 @@ if gen:
                     time.sleep(st)
 
             # Start signal generation:
+            ser.write(b'111')  # Arduino set 5V
             gen.output_on = True
             gen.start()
             print("Running...")
@@ -128,12 +133,15 @@ if gen:
                 time.sleep(0.10)
 
             gen.output_on = False
+            ser.write(b'000')  # Arduino set 0V
+
             next_repeat += repeat_period
             print("Start the sequence at: ",
                   datetime.datetime.utcfromtimestamp(next_repeat).strftime('%Y-%m-%d %H:%M:%S'))
 
         # Disable output:
         gen.output_on = False
+        ser.close()
 
     except Exception as e:
         print('Exception: ' + e.message)
