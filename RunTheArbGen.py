@@ -27,11 +27,11 @@ import serial
 ################################################################
 jobList = [[1, 4], [10, 2], [35, 1], [55, .6], [70, .4], [80, .2], [90, .2], [110, .2], [130, .2],[160,.2],[190,.2] ]
 amplitude = 0.4  # in V
-repeat_period = 36  # seconds between jobs
+repeat_period = 3600  # seconds between jobs
 t = (2021, 6, 11, 16, 14, 0, 0, 0, 0)  # start time
 t = (t[0], t[1], t[2], t[3], 0, 0, 0, 0, 0)  # start time full hour
 
-start_repeat = time.time()  #  time.mktime(t)
+start_repeat = time.mktime(t)
 
 while start_repeat < time.time():
     start_repeat += 3600
