@@ -65,7 +65,6 @@ for item in libtiepie.device_list:
 
 if gen:
     try:
-        print("S types", gen.signal_types)
         # Set signal type:
         gen.signal_type = libtiepie.ST_ARBITRARY
         gen.mode = libtiepie.GM_BURST_COUNT  # make burst
@@ -78,7 +77,7 @@ if gen:
         gen.frequency = 100e3  # 100 kHz
 
         # Set amplitude:
-        gen.amplitude = 2  # 2 V
+        gen.amplitude = amplitude  # 2 V
 
         # Set offset:
         gen.offset = 0  # 0 V
