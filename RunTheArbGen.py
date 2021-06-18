@@ -44,7 +44,7 @@ print(datetime.datetime.utcfromtimestamp(start_repeat).strftime('%Y-%m-%d %H:%M:
 ts = (2021, 6, 28, 17, 0, 0, 0, 0, 0)  # stop time
 stop_repeat = time.mktime(ts)
 
-port = "COM6"
+port = "COM8"
 ser = serial.Serial(port, baudrate=115200)  # open serial port
 
 # Enable network search:
